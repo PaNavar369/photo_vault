@@ -25,10 +25,7 @@ app.add_middleware(
 )
 
 # MongoDB Connection
-MONGO_URL = os.getenv(
-    "MONGO_URL",
-    "mongodb+srv://leo564945_db_user:aru6pwXwzSPBU5OG@imagevault.wm0tbws.mongodb.net/?appName=imagevault"
-)
+# enter your mongo db connection here 
 
 try:
     client = MongoClient(MONGO_URL)
@@ -51,12 +48,7 @@ JWT_ALGORITHM = "HS256"
 JWT_EXPIRATION_HOURS = 24
 
 # Azure Blob Storage (Local Emulator)
-connection_string = (
-    "DefaultEndpointsProtocol=http;"
-    "AccountName=devstoreaccount1;"
-    "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
-    "BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
-)
+#enter your connection string details here for blob storage 
 
 try:
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
@@ -560,7 +552,7 @@ async def upload_image(gallery_id: str, request: Request, image: UploadFile = Fi
             account_name="devstoreaccount1",
             container_name=container_name,
             blob_name=blob_name,
-            account_key="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==",
+            account_key="Enter your account key in here ",
             permission=BlobSasPermissions(read=True),
             expiry=datetime.utcnow() + timedelta(days=365)
         )
